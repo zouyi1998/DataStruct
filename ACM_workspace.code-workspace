@@ -1,0 +1,118 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"array": "cpp",
+			"deque": "cpp",
+			"list": "cpp",
+			"string": "cpp",
+			"unordered_map": "cpp",
+			"vector": "cpp",
+			"string_view": "cpp",
+			"initializer_list": "cpp",
+			"iostream": "cpp",
+			"bitset": "cpp",
+			"set": "cpp",
+			"ostream": "cpp",
+			"regex": "cpp",
+			"utility": "cpp",
+			"valarray": "cpp",
+			"random": "c",
+			"math.h": "c",
+			"scoped_allocator": "c",
+			"stdio.h": "c",
+			"limits": "cpp",
+			"*.tcc": "cpp",
+			"unordered_set": "cpp",
+			"tuple": "cpp",
+			"variant": "cpp"
+		},
+		"[cpp]": {
+			"files.encoding": "utf8"
+		},
+		"[c]": {
+			"files.encoding": "utf8"
+		},
+		"code-runner.executorMap": {
+			/*power shell 代码*/
+			//  "c": "cd $dir && gcc $fileName -o $workspaceRoot\\Exe\\$fileNameWithoutExt && Get-Content $workspaceRoot\\Data\\$fileNameWithoutExt.txt | $workspaceRoot\\Exe\\$fileNameWithoutExt",
+			//  "cpp": "cd $dir && g++ $fileName -o $workspaceRoot\\Exe\\$fileNameWithoutExt && Get-Content $workspaceRoot\\Data\\$fileNameWithoutExt.txt | $workspaceRoot\\Exe\\$fileNameWithoutExt"
+		
+			/*CMD 代码*/
+			"c": "cd $dir && gcc $fileName -o $workspaceRoot\\Exe\\$fileNameWithoutExt && $workspaceRoot\\Exe\\$fileNameWithoutExt < $workspaceRoot\\Data\\$fileNameWithoutExt.txt",
+			"cpp": "cd $dir && g++ $fileName -o $workspaceRoot\\Exe\\$fileNameWithoutExt && $workspaceRoot\\Exe\\$fileNameWithoutExt < $workspaceRoot\\Data\\$fileNameWithoutExt.txt"
+		},
+		"code-runner.clearPreviousOutput": true,
+		"code-runner.runInTerminal": false,
+		"C_Cpp.default.cppStandard": "c++14",
+		"C_Cpp.default.cStandard": "c99",
+		"C_Cpp.default.intelliSenseMode": "gcc-x64",
+	},
+	"launch": {
+		// 使用 IntelliSense 了解相关属性。 
+		// 悬停以查看现有属性的描述。
+		// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "C/C++ Debug",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}\\Exe\\${fileBasenameNoExtension}.exe",
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": true,
+				"MIMode": "gdb",
+				"miDebuggerPath": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin\\gdb.exe",
+				"setupCommands": [
+					{
+						"description": "为 gdb 启用整齐打印",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				],
+				"preLaunchTask": "Build"
+			}
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Build",
+				"type": "shell",
+				"command": "g++",
+				"args": [
+					"-std=c++14",
+					"-g",
+					"${file}",
+					"-o",
+					"${workspaceFolder}\\Exe\\${fileBasenameNoExtension}.exe"
+				],
+				"problemMatcher": {
+					"owner": "cpp",
+					"fileLocation": [
+						"absolute"
+					],
+					"pattern": {
+						"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+						"file": 1,
+						"line": 2,
+						"column": 3,
+						"severity": 4,
+						"message": 5
+					}
+				},
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				}
+			}
+		]
+	}
+}
